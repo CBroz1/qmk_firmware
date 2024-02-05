@@ -35,74 +35,30 @@ enum tap_dance_codes {
   DA_17,
 };
 
-enum dasbob_layers {
-  _ALPHA,
-  _SYMBL,
-};
-
 enum custom_user_keycodes {
     CUSTOM_KEY_1,
     CUSTOM_KEY_2,
     CUSTOM_KEY_3,
+    CUSTOM_KEY_4,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
-     /* COLEMAK-DH
-      * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
-      * │ Q │ W │ F │ P │ B │       │ J │ L │ U │ Y │ ' │
-      * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │ A │ R │ S │ T │ G │       │ M │ N │ E │ I │ O │
-      * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │ Z │ X │ C │ D │ V │       │ K │ H │ , │ . │ / │
-      * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
-      *           ┌───┐                   ┌───┐
-      *           │REP├───┐           ┌───┤ENT│
-      *           └───┤BSP├───┐   ┌───┤SPC├───┘
-      *               └───│RSE│   │SFT├───┘
-      *                   └───┘   └───┘
-      * SFT + SPC = ENT  // BSP + SYM = DEL //  .  +  /  =  \
-      *  K  +  H  =  -   //  K  +  ,  =  [  //  K  +  .  =  ]
-      *  '  +  Y  =  :   //  '  +  U  =  ;  //  D  +  V  =  `
-      *  HOLD R/I = META // HOLD T/N = CTL // TAPHOLD T/N = CTRL + T/N
-      */
-
-    [_ALPHA] = LAYOUT_split_3x5_3(
+    [0] = LAYOUT_split_3x5_3(
         KC_Q, KC_W, KC_F, KC_P,     KC_B,  KC_J,      KC_L,    KC_U,     KC_Y,   KC_QUOTE,
         KC_A, MY_R, KC_S, TD(DA_0), KC_G,  KC_M,   TD(DA_1),   KC_E,     MY_I,   KC_O,
         KC_Z, KC_X, KC_C, KC_D,     KC_V,  KC_K,      KC_H,    KC_COMMA, KC_DOT, KC_SLASH,
-                 QK_REP, KC_BSPC, TT(1), KC_LSFT, KC_SPACE, KC_ENTER
+                 // QK_REP, KC_BSPC, TT(1), KC_LSFT, KC_SPACE, KC_ENTER
+                 TT(1), KC_BSPC,QK_REP, KC_ENTER, KC_SPACE, KC_LSFT
     ),
-
-     /* SYMBOLS
-      * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
-      * │ 1 │ 2 │ 3 │ 4 │ 5 │       │ 6 │ 7 │ 8 │ 9 │ 0 │
-      * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │ESC│MET│ALT│CTL│TAB│       │SCU│LFT│ UP│ DN│ RT│
-      * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │PSC│VDn│VUp│Pau│   │       │SCD│ ML│ MU│ MD│ MR│
-      * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
-      *           ┌───┐                   ┌───┐
-      *           │REP├───┐           ┌───┤ENT│
-      *           └───┤BSP├───┐   ┌───┤CLK├───┘
-      *               └───│LOW│   │SFT├───┘
-      *                   └───┘   └───┘
-      * L2: Escape, Meta, Alt, Ctrl, Tab
-      *     HOLD Tab = Shift
-      * L3: Print Screen, Vol Down, Vol Up, Play/Pause, LClick
-      *     HOLD Play = Next // TAPHOLD LClick = RClick
-      * R2: Scroll Up, Left, Up, Down, Right
-      * R3: Scroll Down, Mouse Left, Mouse Up, Mouse Down, Mouse Right
-      */
-
-    [_SYMBL] = LAYOUT_split_3x5_3(
+    [1] = LAYOUT_split_3x5_3(
         TD(DA_2),   TD(DA_3), TD(DA_4), TD(DA_5), TD(DA_6), TD(DA_9), TD(DA_10),  TD(DA_11),  TD(DA_12), TD(DA_13),
         KC_ESCAPE,  KC_LGUI,  KC_LALT,  KC_LCTL,  MYTA,     MW_U,     TD(DA_14),  TD(DA_15),  TD(DA_16), TD(DA_17),
         KC_PSCR,    VO_D,     VO_U,     TD(DA_7), TD(DA_8), MW_D,     MM_L,       MM_D,       MM_U,      MM_R,
-                              KC_TRNS,  KC_TRNS,  TO(0),    KC_TRNS,  KC_TRNS,   KC_TRNS
+                              // KC_TRNS,  KC_TRNS,  TO(0),    KC_TRNS,  KC_TRNS,   KC_TRNS
+                              TO(0),    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS
     ),
-
 };
+
 const uint16_t PROGMEM combo0[] = { KC_SPACE, KC_LSFT, COMBO_END};
 const uint16_t PROGMEM combo1[] = { KC_BSPC, TT(1), COMBO_END};
 const uint16_t PROGMEM combo2[] = { KC_D, KC_V, COMBO_END};
@@ -113,8 +69,13 @@ const uint16_t PROGMEM combo6[] = { KC_K, KC_COMMA, COMBO_END};
 const uint16_t PROGMEM combo7[] = { KC_K, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo8[] = { KC_Y, KC_QUOTE, COMBO_END};
 const uint16_t PROGMEM combo9[] = { KC_U, KC_QUOTE, COMBO_END};
+const uint16_t PROGMEM comboa[] = { KC_DOT, KC_COMMA, COMBO_END};
+const uint16_t PROGMEM combob[] = { KC_H, KC_DOT, COMBO_END};
+const uint16_t PROGMEM comboe[] = { KC_H, KC_SLASH, COMBO_END};
 const uint16_t PROGMEM comboc[] = { KC_X, KC_D, COMBO_END};
 const uint16_t PROGMEM combod[] = { KC_X, KC_V, COMBO_END};
+const uint16_t PROGMEM combof[] = { KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combog[] = { MM_D, MM_U, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(combo0, KC_ENTER),
@@ -127,8 +88,13 @@ combo_t key_combos[] = {
     COMBO(combo7, KC_RBRC),
     COMBO(combo8, KC_COLN),
     COMBO(combo9, KC_SCLN),
+    COMBO(comboa, KC_QUOTE),
+    COMBO(combob, KC_COLN),
+    COMBO(comboe, KC_SCLN),
     COMBO(comboc, CUSTOM_KEY_2),
     COMBO(combod, CUSTOM_KEY_3),
+    COMBO(combof, CUSTOM_KEY_4),
+    COMBO(combog, TD(DA_13)),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -156,6 +122,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case CUSTOM_KEY_3:
         if (record->event.pressed) {
             SEND_STRING(SECRET2 SS_TAP(X_ENTER));
+        } else {
+            // on release
+        }
+        break;
+    case CUSTOM_KEY_4:
+        if (record->event.pressed) {
+            SEND_STRING(SECRET3);
         } else {
             // on release
         }

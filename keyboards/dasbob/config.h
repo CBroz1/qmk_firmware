@@ -61,4 +61,3 @@
     #define STARTUP_SONG SONG(STARTUP_SOUND)
     #define STARTUP_SOUND E__NOTE(_E6), E__NOTE(_A6), ED_NOTE(_E7),
 #endif
-

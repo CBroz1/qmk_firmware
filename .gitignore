@@ -90,7 +90,7 @@ tags
 # Things Travis sees
 /.vs
 id_rsa_*
-secrets.tar
+secret*
 
 # Python things
 __pycache__

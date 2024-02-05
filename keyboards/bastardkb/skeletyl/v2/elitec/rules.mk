@@ -17,3 +17,13 @@ RGBLIGHT_SUPPORTED = yes    # RGB underglow is supported, but not enabled by def
 RGB_MATRIX_ENABLE = yes     # Enable keyboard RGB matrix (do not use together with RGBLIGHT_ENABLE)
 
 SPLIT_KEYBOARD = yes
+
+# cbroz added
+LTO_ENABLE = yes             # Longer compile, smaller file
+CONSOLE_ENABLE = no
+COMMAND_ENABLE = no
+TAP_DANCE_ENABLE = yes
+SPACE_CADET_ENABLE = no
+COMBO_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
+SEND_STRING_ENABLE = yes

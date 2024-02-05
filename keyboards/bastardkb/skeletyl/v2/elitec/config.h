@@ -19,3 +19,18 @@
 
 /* Handedness. */
 #define MASTER_RIGHT
+
+// CBroz added
+#define MOUSEKEY_INTERVAL 16 // Default: 50. ~3x faster/more accurate
+#define MOUSEKEY_TIME_TO_MAX 60 // Default: 20. b/c 3x above, slower accel to max
+#define MOUSEKEY_DELAY 100 // Default: 300
+#define MOUSEKEY_WHEEL_DELAY 100 // Same as above
+#define MOUSEKEY_WHEEL_INTERVAL 50 // Default: 100
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 100 // Default: 40
+#define DEBOUNCE 5 // Reduces unintended double-presses - set 0 if not needed
+#undef TAPPING_TOGGLE
+#define TAPPING_TOGGLE 1
+#undef TAPPING_TERM
+#define TAPPING_TERM 160
+#define TAPPING_TERM_PER_KEY
+#define PERMISSIVE_HOLD
