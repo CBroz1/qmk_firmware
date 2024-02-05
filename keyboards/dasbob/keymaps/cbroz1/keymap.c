@@ -44,6 +44,7 @@ enum custom_user_keycodes {
     CUSTOM_KEY_1,
     CUSTOM_KEY_2,
     CUSTOM_KEY_3,
+    CUSTOM_KEY_4,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -113,8 +114,13 @@ const uint16_t PROGMEM combo6[] = { KC_K, KC_COMMA, COMBO_END};
 const uint16_t PROGMEM combo7[] = { KC_K, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo8[] = { KC_Y, KC_QUOTE, COMBO_END};
 const uint16_t PROGMEM combo9[] = { KC_U, KC_QUOTE, COMBO_END};
+const uint16_t PROGMEM comboa[] = { KC_DOT, KC_COMMA, COMBO_END};
+const uint16_t PROGMEM combob[] = { KC_H, KC_DOT, COMBO_END};
+const uint16_t PROGMEM comboe[] = { KC_H, KC_SLASH, COMBO_END};
 const uint16_t PROGMEM comboc[] = { KC_X, KC_D, COMBO_END};
 const uint16_t PROGMEM combod[] = { KC_X, KC_V, COMBO_END};
+const uint16_t PROGMEM combof[] = { KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combog[] = { MM_D, MM_U, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(combo0, KC_ENTER),
@@ -127,8 +133,13 @@ combo_t key_combos[] = {
     COMBO(combo7, KC_RBRC),
     COMBO(combo8, KC_COLN),
     COMBO(combo9, KC_SCLN),
+    COMBO(comboa, KC_QUOTE),
+    COMBO(combob, KC_COLN),
+    COMBO(comboe, KC_SCLN),
     COMBO(comboc, CUSTOM_KEY_2),
     COMBO(combod, CUSTOM_KEY_3),
+    COMBO(combof, CUSTOM_KEY_4),
+    COMBO(combog, TD(DA_13)),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -156,6 +167,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case CUSTOM_KEY_3:
         if (record->event.pressed) {
             SEND_STRING(SECRET2 SS_TAP(X_ENTER));
+        } else {
+            // on release
+        }
+        break;
+    case CUSTOM_KEY_4:
+        if (record->event.pressed) {
+            SEND_STRING(SECRET3);
         } else {
             // on release
         }
